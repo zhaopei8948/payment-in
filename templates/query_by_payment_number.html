@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="weui-cells weui-cells_form">
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label class="weui-label">支付交易号</label></div>
+            <div class="weui-cell__bd">
+                <input id="paymentNumberInput" class="weui-input" type="text" placeholder="请输入支付交易号">
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block otherQuery %}
+    <a href="{{ url_for('paymentIn.queryByOrderNo') }}" class="weui-btn weui-btn_default">按订单号查询</a>
+{% endblock %}
+{% block selfScript %}
+    function submitQuery() {
+        var orderNo = $('#paymentNumberInput').val().replace(/^\s+|\s+$/g, '');
+        window.location.href = "/maintain/paymentIn/queryByPaymentNumber?paymentNumber=" + orderNo;
+    }
+{% endblock %}
