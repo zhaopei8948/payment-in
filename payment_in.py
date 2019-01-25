@@ -8,7 +8,7 @@ from flask_json import FlaskJSON, JsonError, json_response, as_json
 app = Flask(__name__)
 FlaskJSON(app)
 bp = Blueprint('paymentIn', __name__, url_prefix='/maintain/paymentIn', static_folder='static')
-username, password, dbUrl = "ecssent", "dbwork", "172.16.0.140:1525/tybwtfw"
+username, password, dbUrl = "username", "password", "127.0.0.1:1521/orcl"
 appStatus = {"01": "暂存"}
 appStatus["02"] = "申报中"
 appStatus["03"] = "发送电子口岸成功"
