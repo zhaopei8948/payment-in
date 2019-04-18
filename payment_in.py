@@ -42,8 +42,10 @@ def queryByOrderNo():
     orderNo = request.values.get('orderNo')
     print("orderNo=[", orderNo, "]")
     sql = '''
-    select cph.ord_no, cph.ebp_name, cph.ebp_code, cph.pay_transaction_id, cph.pay_name, cph.pay_code, time_to_char(cph.sys_date), cph.app_status from ceb2_pay_head cph
-where cph.ord_no = :orderNo
+    select cph.ord_no, cph.ebp_name, cph.ebp_code, cph.pay_transaction_id,
+    cph.amount_paid, cph.pay_name, cph.pay_code, time_to_char(cph.sys_date), cph.app_status
+    from ceb2_pay_head cph
+    where cph.ord_no = :orderNo
     '''
     result = []
     if orderNo:
@@ -56,8 +58,10 @@ def queryByPaymentNumber():
     paymentNumber = request.values.get('paymentNumber')
     print("paymentNumber=[", paymentNumber, "]")
     sql = '''
-    select cph.ord_no, cph.ebp_name, cph.ebp_code, cph.pay_transaction_id, cph.pay_name, cph.pay_code, time_to_char(cph.sys_date), cph.app_status from ceb2_pay_head cph
-where cph.pay_transaction_id = :paymentNumber
+    select cph.ord_no, cph.ebp_name, cph.ebp_code, cph.pay_transaction_id,
+    cph.amount_paid, cph.pay_name, cph.pay_code, time_to_char(cph.sys_date), cph.app_status
+    from ceb2_pay_head cph
+    where cph.pay_transaction_id = :paymentNumber
     '''
     result = []
     if paymentNumber:
